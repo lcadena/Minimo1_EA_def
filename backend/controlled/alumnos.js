@@ -4,10 +4,11 @@ const Alumno = require('../modelos/alumnos')
 //funciones
 //crear un nuevo alumno
 function saveAlumno (req,res){
-    let alumno = new Alumno()
-    alumno.name = req.body.name
-    alumno.address = req.body.address
-    alumno.phone = req.body.phone
+    let alumno = new Alumno( {
+        name: req.body.name,
+        address: req.body.address,
+        phone: req.body.phone
+    })
 
     Alumno.save((err, alumno) => {
         if (err) res.status(500).send({mensaje: 'Error al guardar en la base da datos ${err}'})
@@ -21,7 +22,8 @@ function updateAlumno (req, res){
     let update = req.body
     Alumno.findByIdAndUpdate(alumnoId, update, (err, alumno) => {
         if (err) res.status(500).send(`Error al actualizarlo: ${err}`)
-    
+        if (!alumno) return res.status(404).send({message: 'La asignatura no existe'})
+
         res.status(200).send(alumno)
     })
 }
