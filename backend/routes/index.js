@@ -13,10 +13,12 @@ api.get('/asignaturas', asignaturaCtrl.getAsignaturas)
 api.get('/listaAsignaturas', asignaturaCtrl.getAsignaturasconalumnos)
 //detalle asignatura - FUNCIONA
 api.get('/asignatura/:asignaturaId', asignaturaCtrl.getAsignatura)
-// alumno de una asignatura
+// alumno de una asignatura -- FUNCIONA
 api.get('/asignaturas/:alumnoId', asignaturaCtrl.getAlumno)
-// añadir alumno a asignatura - NO FUNCIONA
-api.put(':asignaturaId/alumnos/:alumnoId', asignaturaCtrl.addAlumno)
+// añadir alumno a asignatura - FUNCIONA
+api.put('/:asignaturaId/alumnos/:alumnoId', asignaturaCtrl.addAlumno)
+///listas alumnos de una asignatura
+api.get('/filtro/:asignaturaId', asignaturaCtrl.getAlumnosdeAsignatura)
 
 
 //busca alumno por id - FUNCIONA
