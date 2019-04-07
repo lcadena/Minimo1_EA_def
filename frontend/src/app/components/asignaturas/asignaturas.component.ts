@@ -14,7 +14,7 @@ export class AsignaturasComponent implements OnInit {
 lista: Asignaturas[];
 asignaturaId: string;
 detallesForm: FormGroup;
-detalle: Asignaturas; 
+asignatura: Asignaturas; 
 
   constructor(private router: Router, private formBuilder: FormBuilder, private asignaturaService: AsignaturaService){
 
@@ -37,7 +37,7 @@ detalle: Asignaturas;
     this.asignaturaService.getAsignatura(this.asignaturaId).subscribe(
       res => {
         console.log(res)
-        this.detalle = res 
+        this.asignatura = res 
       });
 
   }
