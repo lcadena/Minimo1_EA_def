@@ -16,7 +16,12 @@ export class AsignaturaService {
     this.environment = new Environments();
   }
 
-  getAsignatura() :Observable<Asignaturas[]> {
-    return this.http.get<Asignaturas[]>(this.environment.urlAsignaturas)
+  getAsignaturas() :Observable<Asignaturas[]> {
+    return this.http.get<Asignaturas[]>(this.environment.urlAsignaturas);
   }
+
+  getAsignatura(_id: string) :Observable<Asignaturas[]> {
+    return this.http.get<Asignaturas[]>(this.environment.urlAsignaturas + `/${_id}`);
+  }
+
 }
