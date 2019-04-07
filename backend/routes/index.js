@@ -16,7 +16,7 @@ api.post('/asignatura/:asignaturaId',asignaturaCtrl.addAlumno)
 
 
 // crear alumno
-api.post('/alumno', alumnoCtrl.saveAlumno)
+api.post('/alumno/:alumno', alumnoCtrl.saveAlumno)
 //modificar alumno
 api.post('/alumno/:alumnoId', alumnoCtrl.updateAlumno)
 //eliminar alumno

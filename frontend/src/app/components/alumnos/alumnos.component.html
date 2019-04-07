@@ -1,6 +1,27 @@
-<p>
-  alumnos works!
-  lista de nakjbfaoifhbcakldjv
-  cbjksdxhvkdx
+<h1> Alumnos </h1>
+
+<form [formGroup]="crearForm" (ngSubmit)="addAlumno()" >
+  <div class="form-group">
+    <label>Nombre</label>
+    <input type="text" class="form-control" formControlName="name" />
+  </div>
+
+  <div class="form-group">
+    <label>Direccion</label>
+    <input type="text" class="form-control" formControlName="address" />
+  </div>
+
+  <div class="form-group">
+    <label>Telefono de casa</label>
+    <input type="text" class="form-control" formControlName="home" />
+  </div>
   
-</p>
+  <div class="form-group">
+    <label>Telefono movil</label>
+    <input type="text" class="form-control" formControlName="movil" />
+  </div>
+
+  <div class="form-group">
+    <button type="submit"> Añadir  </button>
+  </div>
+</form>

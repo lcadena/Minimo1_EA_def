@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient } from "@angular/common/http"
 import { Alumnos } from "../models/alumnos";
 import { Environments } from "./environments"
 
@@ -7,18 +7,18 @@ import { Environments } from "./environments"
 @Injectable({
   providedIn: 'root'
 })
-export class AlumnosService {
+export class AlumnosService {  
   environment: Environments;
   selectedAlumno: Alumnos; 
 
-  constructor() {
+  constructor( private http: HttpClient) {
     this.selectedAlumno = new Alumnos("","","","");
     this.environment = new Environments();
    }
    //recoger los datos en http 
-   /* ejmplo
-   signup(user: User) {
-    return this.http.post(this.environment.urlUser + "signup", user)
+   
+   add(alumno: Alumnos) {
+    return this.http.post(this.environment.urlAlumnos, alumno)
   }
-   */
+   
 }
