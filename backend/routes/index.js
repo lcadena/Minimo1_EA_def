@@ -14,7 +14,7 @@ api.get('/asignatura/:asignaturaId', asignaturaCtrl.getAsignatura)
 // alumno de una asignatura
 api.get('/asignaturas/:alumnoId', asignaturaCtrl.getAlumno)
 // añadir alumno a asginatura
-api.post('/asignatura/:asignaturaId',asignaturaCtrl.addAlumno)
+api.put(':asignaturaId/alumnos/:alumnoId',asignaturaCtrl.addAlumno)
 
 
 //listar alumnos

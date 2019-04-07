@@ -11,4 +11,4 @@ const AsignaturasSchema = new Schema({
 })
 
 
-module.exports = mongoose.model('asignaturas', AsignaturasSchema)
+module.exports = mongoose.model('Asignaturas', AsignaturasSchema)

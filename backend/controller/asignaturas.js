@@ -30,16 +30,16 @@ function getAsignaturasconalumnos(req, res) {
   }
 
 //guardar asignaturas
-function saveAsignatura(req, res) {
-    const asignatura = new Asignatura({
+function saveAsignatura (req, res){
+    let asignatura = new Asignatura({
         name: req.body.name
     });
-    console.log(asignatura);
+    console.log(asignatura)
     asignatura.save((err, result) => {
-      console.log(result)
-      if (err) res.status(500).send({message: `Error al añadir asignatura: ${err}`})
-      return res.status(200).send({message: "Asignatura añadida correctamente", result})
-    })
+        console.log(result)
+        if (err) res.status(500).send({mensaje: `Error al guardar en la base da datos ${err}`})
+        res.status(200).send({result})
+    })   
 }
 
 
