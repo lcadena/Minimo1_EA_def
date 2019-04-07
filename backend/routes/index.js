@@ -5,29 +5,25 @@ const asignaturaCtrl = require('../controller/asignaturas')
 const alumnoCtrl = require('../controller/alumnos')
 const api = express.Router()
 
-//guardar asignatura - FUNCIONA
+//crear nueva asignatura
 api.post('/nuevaAsignatura', asignaturaCtrl.saveAsignatura)
-//listado de asignaturas - FUNCIONA
+//listado de asignatiras
 api.get('/asignaturas', asignaturaCtrl.getAsignaturas)
-///listado asignaturas con alumnos 
-api.get('/listaAsignaturas', asignaturaCtrl.getAsignaturasconalumnos)
-//detalle asignatura - FUNCIONA
+//detalle asignatura
 api.get('/asignatura/:asignaturaId', asignaturaCtrl.getAsignatura)
 // alumno de una asignatura
 api.get('/asignaturas/:alumnoId', asignaturaCtrl.getAlumno)
-// añadir alumno a asignatura - NO FUNCIONA
-api.put(':asignaturaId/alumnos/:alumnoId', asignaturaCtrl.addAlumno)
+// añadir alumno a asginatura
+api.put(':asignaturaId/alumnos/:alumnoId',asignaturaCtrl.addAlumno)
 
 
-//busca alumno por id - FUNCIONA
-api.get('/alumno/:alumnoId', alumnoCtrl.getAlumnobyId)
-//listar alumnos - FUNCIONA
+//listar alumnos
 api.get('/listaAlumnos', alumnoCtrl.listarAlumnos)
-// crear alumno - FUNCIONA
+// crear alumno
 api.post('/nuevoAlumno', alumnoCtrl.saveAlumno)
-//modificar alumno - FUNCIONA
-api.put('/alumno/:alumnoId', alumnoCtrl.updateAlumno)
-//eliminar alumno - FUNCIONA
+//modificar alumno
+api.post('/alumno/:alumnoId', alumnoCtrl.updateAlumno)
+//eliminar alumno
 api.delete('/alumno/:alumnoId', alumnoCtrl.deleteAlumno)
 
 module.exports = api;

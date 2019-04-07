@@ -10,8 +10,8 @@ const routes: Routes = [
   {path: 'api/asignaturas/:id', component: AsignaturasComponent},
   {path: 'api/asignatura/:id', component: AsignaturasComponent},
   {path: 'api/alumno', component: AlumnosComponent},
-  {path: 'api/alumno/:id', component: AlumnosComponent}
-
+  {path: 'api/alumno/:id', component: AlumnosComponent},
+  {path: '', redirectTo: 'dashboard', pathMatch: 'full'}
 ];
 
 @NgModule({
