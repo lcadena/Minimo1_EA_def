@@ -12,6 +12,16 @@ function listarAlumnos(req, res) {
         res.status(200).send(alumnos)
     })
   }
+// buscar alumno por id
+function getAlumnobyId(req, res) {
+    let alumnoId = req.params.alumnoId
+    Alumno.findById(alumnoId,(err, result) => {
+        if (err) return res.status(500).send(`Error al realizar la petición: ${err} `)
+        if (!result) return res.status(404).send(`El alumno no existe`)
+        res.status(200).send({ result })
+    })
+}
+
 
 //crear un nuevo alumno
 function saveAlumno (req,res){
@@ -20,7 +30,9 @@ function saveAlumno (req,res){
         address: req.body.address,
         phone: req.body.phone
     });
+    console.log(alumno)
     alumno.save((err, alumno) => {
+        console.log(alumno)
         if (err) res.status(500).send({mensaje: 'Error al guardar en la base da datos ${err}'})
         res.status(200).send({alumno})
     })   
@@ -57,6 +69,7 @@ function deleteAlumno (req, res){
 module.exports = {
     listarAlumnos,
     saveAlumno,
+    getAlumnobyId,
     updateAlumno,
     deleteAlumno
 }

@@ -35,10 +35,12 @@ function saveAsignatura (req, res){
         name: req.body.name
     });
     console.log(asignatura)
-    asignatura.save((err, result) => {
-        console.log(result)
+    asignatura.save((err, asignatura) => {
+        console.log(asignatura)
+        console.log(err)
         if (err) res.status(500).send({mensaje: `Error al guardar en la base da datos ${err}`})
-        res.status(200).send({result})
+        
+        return res.status(200).send({asignatura})
     })   
 }
 
@@ -67,7 +69,8 @@ function getAlumno(req, res) {
 function addAlumno (req, res){
     let asignaturaId = req.params.asignaturaId
     let alumnoId = req.params.alumnoId
-    Asignatura.findByIdAndUpdate({_id: asignaturaId}, {"$push": {"alumnos": alumnoId}}, (err, result) => {
+    
+    Asignatura.update({_id: asignaturaId}, {"$push": {"alumnos": alumnoId}}, (err, result) => {
         if (err) return res.status(500).send(`Error al realizar la petición: ${err} `)
         if (!result) return res.status(404).send(`el alumno no se ha podido añadir`)
         console.log(result)
