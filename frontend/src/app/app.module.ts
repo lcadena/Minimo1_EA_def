@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AsignaturasComponent } from './components/asignaturas/asignaturas.component';
 import { AlumnosComponent } from './components/alumnos/alumnos.component';
 import { NewasignaturaComponent } from './components/newasignatura/newasignatura.component';
+import { MainComponent } from './components/main/main.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { NewasignaturaComponent } from './components/newasignatura/newasignatura
     AsignaturasComponent,
     AlumnosComponent,
     NewasignaturaComponent,
+    MainComponent,
    
   ],
   imports: [
