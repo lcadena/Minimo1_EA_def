@@ -71,12 +71,23 @@ function getAlumnosdeAsignatura(req, res) {
 
     Asignatura.findById({_id: asignaturaId}, (err, result) => {
         console.log(result.alumnos)
-        Alumno.findById({_id: result.alumnos}, (err, alumnos) => {
-            console.log(alumnos)
-            if(err) return res.status(500).send(`Error al realizar la petición: ${err} `)
-        
-            return res.status(200).send(alumnos)
-        })
+        //console.log(alumnos)
+        if(err) return res.status(500).send(`Error al realizar la petición: ${err} `)
+    
+        return res.status(200).send(result.alumnos)
+        /*var arraydeIds = result.alumnos
+        console.log(arraydeIds)
+        arraydeIds.forEach(element => {
+            console.log(element)
+            Alumno.findById({_id: element}, (err, alumnos) => {
+                if(err) return res.status(500).send(`Error al realizar la petición: ${err} `)
+                
+                return res.status(200).send(element)
+            })
+        });*/
+        //Alumno.findById({_id: result.alumnos}, (err, alumnos) => {
+
+        //})
     })
 }
 
