@@ -18,15 +18,15 @@ export class AsignaturaService {
   }
 
   addAsignatura(asignatura: Asignaturas) {
-    return this.http.post(this.environment.urlAsignaturas , asignatura)
+    return this.http.post(this.environment.urlAsignatura + "nueva" , asignatura)
   }
 
   getAsignaturas() :Observable<Asignaturas[]> {
-    return this.http.get<Asignaturas[]>(this.environment.urlAsignaturas);
+    return this.http.get<Asignaturas[]>(this.environment.urlAsignatura);
   }
 
   getAsignatura(_id: string) :Observable<Asignaturas> {
-    return this.http.get<Asignaturas>(this.environment.urlAsignaturas + `/${_id}`);
+    return this.http.get<Asignaturas>(this.environment.urlAsignatura + `/${_id}`);
   }
 
 }

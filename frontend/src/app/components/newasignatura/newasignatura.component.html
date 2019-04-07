@@ -1,57 +1,21 @@
-<router-outlet></router-outlet>
-<h2>Add new product</h2>
-<form [formGroup]="addproductForm" (ngSubmit)="addProduct()">
+<h2>Add new Subject</h2>
+<form [formGroup]="newasignaturaForm" (ngSubmit)="addAsignatura ()">
 
   <div class="form-group">
-    <label>Name of the product</label>
+    <label>Name of the Subject</label>
     <input type="text" class="form-control" formControlName="name"/>
     <div class="validation-errors">
       <ng-container *ngFor="let validation of validation_messages.name">
-        <div class="alert alert-danger" *ngIf="addproductForm.get('name').hasError(validation.type) && (addproductForm.get('name').dirty || addproductForm.get('name').touched)">
+        <div class="alert alert-danger" *ngIf="newasignaturaForm.get('name').hasError(validation.type) && (newasignaturaForm.get('name').dirty || newasignaturaForm.get('name').touched)">
           {{ validation.message }}
         </div>
       </ng-container>
     </div>
   </div>
 
-  <div class="form-group">
-    <label>Price</label>
-    <input type="text" class="form-control" formControlName="price"/>
-    <div class="validation-errors">
-      <ng-container *ngFor="let validation of validation_messages.price">
-        <div class="alert alert-danger" *ngIf="addproductForm.get('price').hasError(validation.type) && (addproductForm.get('price').dirty || addproductForm.get('price').touched)">
-          {{ validation.message }}
-        </div>
-      </ng-container>
-    </div>
-  </div>
 
   <div class="form-group">
-    <label>Category: phones, accessories, computers</label>
-    <input type="text" class="form-control" formControlName="category"/>
-    <div class="validation-errors">
-      <ng-container *ngFor="let validation of validation_messages.category">
-        <div class="alert alert-danger" *ngIf="addproductForm.get('category').hasError(validation.type) && (addproductForm.get('category').dirty || addproductForm.get('category').touched)">
-          {{ validation.message }}
-        </div>
-      </ng-container>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label>Description</label>
-    <input type="text" class="form-control" formControlName="description"/>
-    <div class="validation-errors">
-      <ng-container *ngFor="let validation of validation_messages.description">
-        <div class="alert alert-danger" *ngIf="addproductForm.get('description').hasError(validation.type) && (addproductForm.get('description').dirty || addproductForm.get('description').touched)">
-          {{ validation.message }}
-        </div>
-      </ng-container>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <button class="btn btn-primary" type="submit" [disabled]="addproductForm.invalid">Add product</button>
+    <button class="btn btn-primary" type="submit" [disabled]="newasignaturaForm.invalid">Add</button>
     <a [routerLink]="['']" style="margin-left: 30px">Cancel</a>
   </div>
 

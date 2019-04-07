@@ -7,7 +7,8 @@ import { MainComponent } from "./components/main/main.component";
 import {NewasignaturaComponent} from "./components/newasignatura/newasignatura.component";
 
 const routes: Routes = [
-  {path: 'api/asignaturas', component: AsignaturasComponent},
+  {path: 'api/asignatura/nueva', component: AsignaturasComponent},
+
   {path: 'api/asignaturas/:id', component: AsignaturasComponent},
   {path: 'api/asignatura/:id', component: AsignaturasComponent},
   {path: 'api/alumno/:id', component: AlumnosComponent},

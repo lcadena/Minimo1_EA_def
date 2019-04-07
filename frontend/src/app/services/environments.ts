@@ -1,5 +1,6 @@
 export class Environments {
-    urlMinimo: string = "http://localhost:3000/api/";
-    urlAsignaturas: string = "http://localhost:3000/api/asignaturas";
-    urlAlumnos: string = "http://localhost:3000/api/alumno";
+    urlVacio: string = "http://localhost:3000/api/";
+    urlAsignatura: string = "http://localhost:3000/api/asignatura/";
+    urlAlumno: string = "http://localhost:3000/api/alumno/";
+    urlRelacion: string = "http://localhost:3000/api/relacion/";
 }

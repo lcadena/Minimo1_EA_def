@@ -5,31 +5,43 @@ const asignaturaCtrl = require('../controller/asignaturas')
 const alumnoCtrl = require('../controller/alumnos')
 const api = express.Router()
 
-//guardar asignatura - FUNCIONA
-api.post('/nuevaAsignatura', asignaturaCtrl.saveAsignatura)
+
+//ASIGNATURAS: http://localhost:3000/api/asignatura
+//crear asignatura - FUNCIONA
+api.post('/asignatura/nueva', asignaturaCtrl.saveAsignatura)
 //listado de asignaturas - FUNCIONA
-api.get('/asignaturas', asignaturaCtrl.getAsignaturas)
-///listado asignaturas con alumnos 
-api.get('/listaAsignaturas', asignaturaCtrl.getAsignaturasconalumnos)
+api.get('/asignatura/listaAsignaturas', asignaturaCtrl.getAsignaturas)
 //detalle asignatura - FUNCIONA
 api.get('/asignatura/:asignaturaId', asignaturaCtrl.getAsignatura)
-// alumno de una asignatura -- FUNCIONA
-api.get('/asignaturas/:alumnoId', asignaturaCtrl.getAlumno)
-// añadir alumno a asignatura - FUNCIONA
-api.put('/:asignaturaId/alumnos/:alumnoId', asignaturaCtrl.addAlumno)
-///listas alumnos de una asignatura
-api.get('/filtro/:asignaturaId', asignaturaCtrl.getAlumnosdeAsignatura)
+//modificar asignatura
+//----
+//eliminar asignatura
+//----
 
 
-//busca alumno por id - FUNCIONA
-api.get('/alumno/:alumnoId', alumnoCtrl.getAlumnobyId)
-//listar alumnos - FUNCIONA
-api.get('/listaAlumnos', alumnoCtrl.listarAlumnos)
+//ALUMNOS: http://localhost:3000/api/alumno
 // crear alumno - FUNCIONA
-api.post('/nuevoAlumno', alumnoCtrl.saveAlumno)
+api.post('/alumno/nuevo', alumnoCtrl.saveAlumno)
+//listar alumnos - FUNCIONA
+api.get('/alumno/listaAlumnos', alumnoCtrl.listarAlumnos)
+//detalle alumno - FUNCIONA
+api.get('/alumno/:alumnoId', alumnoCtrl.getAlumnobyId)
 //modificar alumno - FUNCIONA
-api.put('/alumno/:alumnoId', alumnoCtrl.updateAlumno)
+api.put('/alumno/modificar/:alumnoId', alumnoCtrl.updateAlumno)
 //eliminar alumno - FUNCIONA
 api.delete('/alumno/:alumnoId', alumnoCtrl.deleteAlumno)
+
+
+
+//ASIGNATURAS Y ALUMNOS: http://localhost:3000/api/relacion
+// añadir alumno a asignatura - FUNCIONA
+api.put('/relacion/:asignaturaId/:alumnoId', asignaturaCtrl.addAlumno)
+//listado asignaturas con alumnos
+api.get('/relacion/listaAsignaturasConAlumnos', asignaturaCtrl.getAsignaturasconalumnos)
+//listas alumnos de una asignatura
+api.get('/relacion/listaAlumnos/:asignaturaId', asignaturaCtrl.getAlumnosdeAsignatura)
+//detalle alumno de una asignatura -- FUNCIONA
+api.get('/relacion/alumnoDeAsignatura/:alumnoId', asignaturaCtrl.getAlumno)
+
 
 module.exports = api;
