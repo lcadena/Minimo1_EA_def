@@ -1,0 +1,280 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Users Management Swagger",
+    "description": "",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:8080",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "Users",
+      "description": "API for users in the system"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/user": {  
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get all users in system",
+        "responses": {
+          "200": {
+            "description": "Petición realizada correctamente",
+            "schema": {
+              "$ref": "#/definitions/Users"
+            }
+          },
+          "404": {
+            "description": "No existen usuarios",
+            "schema": {
+              "$ref": "#/definitions/Users"
+            }
+          },
+          "500": {
+            "description": "Error al realizar la petición",
+            "schema": {
+              "$ref": "#/definitions/Users"
+            }
+          }
+        }
+      }
+    },
+    "/signin": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Login de usuario",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User that we want to login",
+            "schema": {
+              "$ref": "#/definitions/Signinuser"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Te has logueado correctamente",
+            "schema": {
+              "$ref": "#/definitions/Signinuser"
+            }
+          },
+          "404": {
+            "description": "El usuario no existe, haz un registro",
+            "schema": {
+              "$ref": "#/definitions/Signinuser"
+            }
+          },
+          "500": {
+            "description": "Error al realizar la petición",
+            "schema": {
+              "$ref": "#/definitions/Signinuser"
+            }
+          }
+        }
+      }
+    },
+
+    "/signup": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Registro de usuario",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User that we want to login",
+            "schema": {
+              "$ref": "#/definitions/Signinuser"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Te has registrado correctamente",
+            "schema": {
+              "$ref": "#/definitions/Signinuser"
+            }
+          },
+          "500": {
+            "description": "Error al crear el usaurio",
+            "schema": {
+              "$ref": "#/definitions/Signinuser"
+            }
+          }
+        }
+      }
+    },
+
+    "/users/{userId}": {
+      "parameters": [
+        {
+          "name": "userId",
+          "in": "path",
+          "required": true,
+          "description": "Busqueda de usuario por id",
+          "type": "string"
+        }
+      ],
+      
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Lista el usuario con el id de busqueda",
+        "responses": {
+          "200": {
+            "description": "Usuario",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "404": {
+            "description": "El usuario no existe",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "500": {
+            "description": "Error al realizar la petición",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Borrar un usaurio por id",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "usuario eliminado correctamente",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "500": {
+            "description": "Error al borrar al usuario",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Modificación de parametros de usuario por id",
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "Usuario con nuevos parametros a modificar",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuario modificado correctamente",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "404": {
+            "description": "El usuario no existe",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "500": {
+            "description": "Error al realizar la petición",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+
+    }
+  },
+  "definitions": {
+    "User": {
+      "required": [
+        "email",
+        "firstname",
+        "lastname",
+        "password",
+        "rol"
+      ],
+      "properties": {
+        "email": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "firstname": {
+          "type": "string"
+        },
+        "lastname": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "rol": {
+          "type": "string"
+        }        
+      }
+    },
+    "Users": {
+      "type": "array",
+      "$ref": "#/definitions/User"
+    },
+    "Signinuser": {
+      "required":[
+         "email",
+         "password"
+      ],
+      "properties":{
+          "email": {
+          "type": "string",
+          "uniqueItems": true },
+          "password": {
+          "type": "string"
+        
+        }
+      }      
+    }
+  }
+}
