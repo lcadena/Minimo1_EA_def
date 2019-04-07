@@ -6,7 +6,8 @@ const Schema = mongoose.Schema
 //esquema de alumnos 
 const AsignaturasSchema = new Schema({
     name: {type: String,unique: true},
-    alumnos: [alumnosSchema]
+    alumnos: [{type: Schema.Types.ObjectId, ref: 'Alumno'}]
+    //alumnos: [alumnosSchema]
 })
 
 
