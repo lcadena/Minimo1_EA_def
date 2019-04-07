@@ -1,0 +1,27 @@
+<p>ALUMNOS</p>
+
+<form [formGroup]="crearForm" (ngSubmit)="addAlumno()"> 
+    <div class="form-group">
+        <label> Name </label>
+        <input type="text" class="form-control" formControlName="name"/>
+    </div>
+
+    <div class="form-group">
+        <label> Addres</label>
+        <input type="text" class="form-control" formControlName="addres"/>
+    </div>
+
+    <div class="form-group">
+        <label> home </label>
+        <input type="text" class="form-control" formControlName="home"/>
+    </div>
+
+    <div class="form-group">
+        <label> Movil </label>
+        <input type="text" class="form-control" formControlName="movil"/>
+    </div>
+
+    <div class="form-group">
+            <button class="btn " type="submit" > Añadir </button>
+    </div>
+</form>

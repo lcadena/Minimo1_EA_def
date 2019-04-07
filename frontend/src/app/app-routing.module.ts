@@ -5,9 +5,6 @@ import { AsignaturasComponent } from './components/asignaturas/asignaturas.compo
 import { AlumnosComponent } from './components/alumnos/alumnos.component';
 
 
-
-
-
 const routes: Routes = [
   {path: 'api/asignaturas', component: AsignaturasComponent},
   {path: 'api/asignaturas/:id', component: AsignaturasComponent},

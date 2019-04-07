@@ -20,8 +20,8 @@ export class AsignaturaService {
     return this.http.get<Asignaturas[]>(this.environment.urlAsignaturas);
   }
 
-  getAsignatura(_id: string) :Observable<Asignaturas[]> {
-    return this.http.get<Asignaturas[]>(this.environment.urlAsignaturas + `/${_id}`);
+  getAsignatura(_id: string) :Observable<Asignaturas> {
+    return this.http.get<Asignaturas>(this.environment.urlAsignaturas + `/${_id}`);
   }
 
 }

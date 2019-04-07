@@ -1,0 +1,21 @@
+<h6>ASIGNATURAS</h6>
+
+<p *ngFor ="let asignatura of lista">
+    {{asignatura.name}}
+</p>
+<br>
+<br>
+<form [formGroup]="detallesForm" (ngSubmit)=" asignaturadetalle()">
+    <h6>detalles de la asignatura</h6>
+    <div class="form-group">
+        <label > El ID de la asignatura</label>  
+        <input type="text" class ="form-control" formControlName="asignaturaId" placeholder="id de la asignatura">
+    </div>    
+    <span *ngIf="detalle" >
+        {{detalle}}
+    </span>
+    <div class="form-group">
+        <button class="btn " type="submit" > Detalle </button>
+    </div>
+
+</form>
