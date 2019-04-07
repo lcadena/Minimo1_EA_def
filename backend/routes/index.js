@@ -1,8 +1,8 @@
 'use strict'
 
 const express = require('express')
-const asignaturaCtrl = require('../controlled/asignaturas')
-const alumnoCtrl = require('../controlled/alumnos')
+const asignaturaCtrl = require('../controller/asignaturas')
+const alumnoCtrl = require('../controller/alumnos')
 const api = express.Router()
 
 //listado de asignatiras
