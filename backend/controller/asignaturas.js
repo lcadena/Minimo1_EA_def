@@ -65,23 +65,55 @@ function getAlumno(req, res) {
     })
 }
 
-//añadir un alumno (ya existente) a una asignatura
-function addAlumno (req, res){
+//listar alumnos de una aignatura
+function getAlumnosdeAsignatura(req, res) {
     let asignaturaId = req.params.asignaturaId
-    let alumnoId = req.params.alumnoId
+
+    Asignatura.findById({_id: asignaturaId}, (err, result) => {
+        console.log(result.alumnos)
+        //console.log(alumnos)
+        if(err) return res.status(500).send(`Error al realizar la petición: ${err} `)
     
-    Asignatura.update({_id: asignaturaId}, {"$push": {"alumnos": alumnoId}}, (err, result) => {
-        if (err) return res.status(500).send(`Error al realizar la petición: ${err} `)
-        if (!result) return res.status(404).send(`el alumno no se ha podido añadir`)
-        console.log(result)
-        res.status(200).send('el alumno ha sido añadido correctamente')
+        return res.status(200).send(result.alumnos)
+        /*var arraydeIds = result.alumnos
+        console.log(arraydeIds)
+        arraydeIds.forEach(element => {
+            console.log(element)
+            Alumno.findById({_id: element}, (err, alumnos) => {
+                if(err) return res.status(500).send(`Error al realizar la petición: ${err} `)
+                
+                return res.status(200).send(element)
+            })
+        });*/
+        //Alumno.findById({_id: result.alumnos}, (err, alumnos) => {
+
+        //})
     })
 }
+
+//añadir un alumno (ya existente) a una asignatura
+function addAlumno (req, res) {
+    let asignaturaId = req.params.asignaturaId
+    console.log(req.params.asignaturaId)
+    let alumnoId = req.params.alumnoId
+    console.log(req.params.alumnoId)
+
+    Asignatura.update({_id: asignaturaId}, {"$push": {"alumnos": alumnoId}}, (err, result) => {
+        console.log(result)
+        if(err) res.status(500).send(`Error al actualizar la asignatura: ${err}`)
+        if(!result) return res.status(404).send('La asignatura no esta en la bbdd')
+
+        res.status(200).send(result)
+    })
+
+}
+
 module.exports = {
     getAsignaturasconalumnos,
     saveAsignatura,
     getAsignaturas,
     getAsignatura,
     getAlumno,
+    getAlumnosdeAsignatura,
     addAlumno
 }
