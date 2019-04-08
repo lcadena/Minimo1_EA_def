@@ -1,21 +1,18 @@
-<h6>ASIGNATURAS</h6>
+<h2>Subjects</h2>
 
-<p *ngFor ="let asignatura of lista">
-    {{asignatura.name}}
-</p>
-<br>
-<br>
-<form [formGroup]="detallesForm" (ngSubmit)=" asignaturadetalle()">
-    <h6>detalles de la asignatura</h6>
-    <div class="form-group">
-        <label > El ID de la asignatura</label>  
-        <input type="text" class ="form-control" formControlName="asignaturaId" placeholder="id de la asignatura">
-    </div>    
-    <span *ngIf="detalle" >
-        {{detalle}}
-    </span>
-    <div class="form-group">
-        <button class="btn " type="submit" > Detalle </button>
-    </div>
+<div *ngFor = "let asignatura of asignaturas; let i=index">
+  <input type="hidden" value="{{asignatura.name}}">
 
-</form>
+  <h5>{{asignatura.name}}</h5>
+  <p>
+    <button class="btn btn-primary" [routerLink]="['studentDetail',asignatura._id]"><i class="fa fa-eye"></i>&nbsp;See Subject detail</button>
+    <button class="btn btn-primary" [routerLink]="['']"><i class="fa fa-clone"></i> See user products</button>
+    <button class="btn btn-danger" (click)="confirmDelete(asignatura._id, i)"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete </button>
+  </p>
+  <p></p>
+
+</div>
+
+<p><p>
+  <button class="logout" [routerLink]="['']"><i class="fa fa-toggle-left" aria-hidden="true"></i> Back to main menu</button>
+</p><p>
