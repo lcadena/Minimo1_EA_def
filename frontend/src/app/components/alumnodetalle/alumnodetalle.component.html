@@ -1,0 +1,17 @@
+<h2>Student Detail of {{alumno._id}}</h2>
+
+<div class="border border-secondary">
+  <span><img src="https://pngimage.net/wp-content/uploads/2018/06/student-logo-png-6.png"></span>
+  <h2>{{alumno._id}}</h2>
+  <p><b>Address:</b> {{alumno.address}}</p>
+  <p><b>Phone:</b> {{alumno.phone}}</p>
+
+</div>
+
+<p><p>
+  <button class="btn btn-primary btn-block" [routerLink]="['add_Subject']"><i class="fa fa-id-badge"></i>&nbsp;  See my Subjects</button>
+</p>
+
+<p><p>
+  <button class="logout" [routerLink]="['']"><i class="fa fa-toggle-left" aria-hidden="true"></i> Back to main menu</button>
+</p><p>
