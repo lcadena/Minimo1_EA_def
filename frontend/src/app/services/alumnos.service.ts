@@ -33,8 +33,8 @@ export class AlumnosService {
     return this.http.delete(this.environment.urlAlumno + "/eliminar" + `/${_id}`);
   }
 
-  getAlumno(_id: string):Observable<Alumnos> {
-    return this.http.get<Alumnos>(this.environment.urlAlumno + `/${_id}`);
+  getAlumno(id: string):Observable<Alumnos> {
+    return this.http.get<Alumnos>(this.environment.urlAlumno + `/${id}`);
   }
    
 }

@@ -1,5 +1,6 @@
-<h6>ASIGNATURAS</h6>
+<h2>Subjects</h2>
 
+<<<<<<< HEAD
 <p *ngFor ="let asignatura of lista">
     {{asignatura.name}}
 </p>
@@ -18,5 +19,21 @@
     <div class="form-group">
         <button class="btn " type="submit" > Detalle </button>
     </div>
+=======
+<div *ngFor = "let asignatura of asignaturas; let i=index">
+  <input type="hidden" value="{{asignatura.name}}">
+>>>>>>> 79c6ffb6a67d20b30cb17daf60a2c0c8e8cbff33
 
-</form>
+  <h5>{{asignatura.name}}</h5>
+  <p>
+    <button class="btn btn-primary" [routerLink]="['studentDetail',asignatura._id]"><i class="fa fa-eye"></i>&nbsp;See Subject detail</button>
+    <button class="btn btn-primary" [routerLink]="['']"><i class="fa fa-clone"></i> See user products</button>
+    <button class="btn btn-danger" (click)="confirmDelete(asignatura._id, i)"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete </button>
+  </p>
+  <p></p>
+
+</div>
+
+<p><p>
+  <button class="logout" [routerLink]="['']"><i class="fa fa-toggle-left" aria-hidden="true"></i> Back to main menu</button>
+</p><p>

@@ -4,6 +4,8 @@ import {Router} from "@angular/router";
 import { HttpErrorResponse } from "@angular/common/http";
 import {FormBuilder, FormControl, FormGroup, NgForm} from "@angular/forms";
 import { Asignaturas } from "../../models/asignaturas"
+import {AlumnosService} from "../../services/alumnos.service";
+import {Alumnos} from "../../models/alumnos";
 
 @Component({
   selector: 'app-asignaturas',
@@ -11,7 +13,64 @@ import { Asignaturas } from "../../models/asignaturas"
   styleUrls: ['./asignaturas.component.css']
 })
 export class AsignaturasComponent implements OnInit {
-lista: Asignaturas[];
+
+  constructor(private asignaturaService: AsignaturaService, private router: Router) {
+
+  }
+
+  asignaturas: Asignaturas[];
+
+  ngOnInit() {
+    this.getSubjects();
+  }
+
+  getSubjects(){
+    this.asignaturaService.getAsignaturas()
+      .subscribe(res =>{
+        this.asignaturas = res; //res me recibe la lista de users
+      });
+  }
+
+  /**
+   *
+   * @param id
+   */
+  confirmDelete(id: string, i: number) {
+    if(confirm('El alumno se borrará')){
+      this.asignaturaService.deleteAsignatura(id)
+        .subscribe(
+          res =>{
+            console.log(res);
+            console.log("Se ha borrado correctamente ", i);
+            //this.getStudents();
+
+            //Two way data binding!
+            this.asignaturas.splice(i,1);
+            console.log("Se ha borrado correctamente ", this.asignaturas);
+
+          },
+          err => {
+            this.handleError(err);
+          });
+    }
+  }
+
+  /**
+   *
+   * @param err
+   */
+  private handleError(err: HttpErrorResponse) {
+    if( err.status == 500 ) {
+      alert(err);
+    }
+  }
+
+
+
+
+
+
+  /*lista: Asignaturas[];
 asignaturaId: string;
 detallesForm: FormGroup;
 asignatura: Asignaturas; 
@@ -40,7 +99,7 @@ asignatura: Asignaturas;
         this.asignatura = res 
       });
 
-  }
+  }*/
  
 
  

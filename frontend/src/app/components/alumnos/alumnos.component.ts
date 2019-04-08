@@ -24,7 +24,8 @@ export class AlumnosComponent implements OnInit {
   getStudents(){
     this.alumnosService.getAlumnos()
       .subscribe(res =>{
-        this.alumnos = res; //res me recibe la lista de users
+        this.alumnos = res 
+         console.log("lista de usuarios  " + res )//res me recibe la lista de users
       });
   }
 

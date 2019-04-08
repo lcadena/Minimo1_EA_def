@@ -22,7 +22,12 @@ export class AsignaturaService {
   }
 
   getAsignaturas() :Observable<Asignaturas[]> {
-    return this.http.get<Asignaturas[]>(this.environment.urlAsignatura);
+    return this.http.get<Asignaturas[]>(this.environment.urlAsignatura + "/listaAsignaturas");
+  }
+
+  //Me borra el alumno
+  deleteAsignatura(_id: string) {
+    return this.http.delete(this.environment.urlAsignatura + "/eliminar" + `/${_id}`);
   }
 
   getAsignatura(_id: string) :Observable<Asignaturas> {

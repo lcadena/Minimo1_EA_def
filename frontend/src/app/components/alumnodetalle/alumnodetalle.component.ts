@@ -11,26 +11,30 @@ import {Alumnos} from "../../models/alumnos";
 export class AlumnodetalleComponent implements OnInit {
 
   alumno: Alumnos;
-
+  id: string;
+  
   constructor(private activatedRouter: ActivatedRoute, private alumnoService: AlumnosService) {
     this.alumno = new Alumnos();
+    
   }
 
   ngOnInit() {
-    this.activatedRouter.params.subscribe(params => {
+    this.id = this.alumno._id;
+  this.activatedRouter.params.subscribe(params => {
       if (typeof params['id'] !== 'undefined') {
         this.alumno._id = params['id'];
       } else {
         this.alumno._id = '';
       }
     });
-    this.getStudent(this.alumno._id);
+    this.getStudent();
   }
 
-  getStudent(id: string) {
-    this.alumnoService.getAlumno(id)
+  getStudent() {
+    console.log("id del alumno   " + this.id)
+    this.alumnoService.getAlumno(this.alumno._id)
       .subscribe(res =>{
-        this.alumno = res["alumno"];
+        this.alumno = res;
       });
     console.log(this.alumno);
   }
