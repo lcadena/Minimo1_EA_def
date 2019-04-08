@@ -1,25 +1,28 @@
-<h2>Bikes of Station</h2>
-<table>
-      <!--cabecera-->
-      <thead>
+<div class="card-panel">
+    <h2 class="blue-text text-darken-2">Bikes of Station</h2>
+    <table class="striped">
+          <!--cabecera-->
+          <thead>
+    
+          </thead>
+          <!--cuerpo-->
+          <tbody>
+          <th>Name</th>
+          <th>Kms</th>
+          <th>Description</th>
+          <th>Operations</th>
+        </tbody>
+        <tr *ngFor ="let bike of bikesStations; let i=index">
+            <td>{{bike.name}}</td>
+            <td>{{bike.Kms}}</td>
+            <td>{{bike.description}}</td>
+            <!--<td>{{station.bikes}}</td>-->
+            <td>
+              <a (click)="addBike(bike._id)">
+                <i class="material-icons">add</i>
+              </a>
+            </td>
+          </tr>
+    </table>
+</div>
 
-      </thead>
-      <!--cuerpo-->
-      <tbody>
-      <th>Name</th>
-      <th>Kms</th>
-      <th>Description</th>
-      <th>Operations</th>
-    </tbody>
-    <tr *ngFor ="let bike of bikes; let i=index">
-        <td>{{bike.name}}</td>
-        <td>{{bike.Kms}}</td>
-        <td>{{bike.description}}</td>
-        <!--<td>{{station.bikes}}</td>-->
-        <td>
-          <a (click)="addBike(bike._id)">
-            <i class="material-icons">add</i>
-          </a>
-        </td>
-      </tr>
-</table>

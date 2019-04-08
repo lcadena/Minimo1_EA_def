@@ -4,7 +4,8 @@ export class Bikes {
     kms: string;
     description: string;
 
-    constructor(_id ='',name ='', kms = '' , description =''){
+    constructor(_id ='',name ='', kms: string, description =''){
+        let x = parseInt(kms)
         this._id = _id;
         this.name = name;
         this.kms = kms;

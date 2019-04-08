@@ -23,7 +23,7 @@ export class BikesofstationsComponent implements OnInit {
     this.stationService.getBikesOfStation(stationId)
       .subscribe(res => {
         this.bikesStations = res
-        console.log("lista de estaciones  " + this.bikesStations)
+        console.log("lista de estaciones2  " + this.bikesStations)
       });
   }
 

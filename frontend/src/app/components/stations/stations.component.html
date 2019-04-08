@@ -1,5 +1,6 @@
-<div class="card-panel grey lighten-1"><h2>Stations</h2>
-  <table>
+<div class="card-panel">
+  <h2 class="blue-text text-darken-2">Stations</h2>
+  <table class="striped" >
         <!--cabecera-->
         <thead>
   
@@ -12,20 +13,20 @@
         <th>Operations</th>
       </tbody>
       <tr *ngFor ="let station of stations; let i=index">
-
           <td>{{station.name}}</td>
           <td>{{station.state}}</td>
           <td>{{station.description}}</td>
           <!--<td>{{station.bikes}}</td>-->
           <td>
-            <a href="http://localhost:4200/api/relacion/listaBikes" (click)="getBikesOfStation(station._id)" >
-              <!--<button class="btn btn-primary" [routerLink]="['/api/relacion/listaBikes', station._id]"><i class="material-icons">visibility</i></button>-->
-              <i  class="material-icons">visibility</i>
-            </a>
+            <a href="http://localhost:4200/api/relacion/listaBikes/:stationId" class="waves-effect waves-light btn">
+              <!--href="http://localhost:4200/api/relacion/listaBikes/stationId"
+                (click)="getBikesOfStation(stationId)" <button class="btn btn-primary" [routerLink]="['/api/relacion/listaBikes', stationId]"><i class="material-icons">visibility</i></button>-->
+              <i  class="material-icons right">visibility</i>view</a>
           </td>
         </tr>
   </table>
-  <a href="http://localhost:4200/api/bike/listaBikes" class="waves-effect waves-light btn">Bikes List</a>
+  <a href="http://localhost:4200/api/bike/listaBikes" class="waves-effect waves-light btn">
+  <i class="material-icons right">directions_bike</i>Bikes List</a>
   <p></p>
 
 

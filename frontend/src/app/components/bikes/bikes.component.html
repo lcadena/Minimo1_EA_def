@@ -1,25 +1,29 @@
-<h2>Bikes</h2>
-<table>
-      <!--cabecera-->
-      <thead>
-
-      </thead>
-      <!--cuerpo-->
-      <tbody>
-      <th>Name</th>
-      <th>Kms</th>
-      <th>Description</th>
-      <th>Operations</th>
-    </tbody>
-    <tr *ngFor ="let bike of bikes; let i=index">
-        <td>{{bike.name}}</td>
-        <td>{{bike.Kms}}</td>
-        <td>{{bike.description}}</td>
-        <!--<td>{{station.bikes}}</td>-->
-        <td>
-          <a (click)="deleteBike(bike._id)">
-            <i class="material-icons">delete</i>
-          </a>
-        </td>
-      </tr>
-</table>
+<div class="card-panel">
+    <h2 class="blue-text text-darken-2">Bikes</h2>
+    <table class="striped">
+        <!--cabecera-->
+        <thead>
+  
+        </thead>
+        <!--cuerpo-->
+        <tbody>
+        <th>Name</th>
+        <th>Kms</th>
+        <th>Description</th>
+        <th>Operations</th>
+      </tbody>
+      <tr *ngFor ="let bike of bikes; let i=index">
+          <td>{{bike.name}}</td>
+          <td>{{bike.Kms}}</td>
+          <td>{{bike.description}}</td>
+          <!--<td>{{station.bikes}}</td>-->
+          <td>
+            <a (click)="deleteBike(bike._id)" class="waves-effect waves-light btn">
+              <i class="material-icons right">delete</i>delete</a>
+            <a (click)="addBike(bike._id)" class="waves-effect waves-light btn">
+                <i class="material-icons">add</i>
+              </a>
+          </td>
+        </tr>
+  </table>
+</div>

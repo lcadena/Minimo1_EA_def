@@ -69,18 +69,18 @@ function getBikesOfStation(req, res) {
     let stationId = req.params.stationId
 
     Station.findById({_id: stationId}, (err, result) => {
-        console.log(result.bikes)
+        //console.log(result.bikes)
         //console.log(alumnos)
         if(err) return res.status(500).send(`Error al realizar la petición: ${err} `)
 
         if(!result) return res.status(400).send({message: 'La estación no existe'})
 
-        Bike.find({'_id': { $in: result.bikes}}, (err, bikes) => {
-            if(bikes.length == 0) {
+        Bike.find({'_id': { $in: result.bikes}}, (err, bikesStations) => {
+            if(bikesStations.length == 0) {
                 return res.status(204).send({message: 'No hay bicis en la estación'})
             }
             else {
-                return res.status(200).send(bikes)
+                return res.status(200).send(bikesStations)
             }
         })
 
