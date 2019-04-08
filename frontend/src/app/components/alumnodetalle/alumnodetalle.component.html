@@ -1,13 +1,14 @@
-<h2>Student Detail of {{alumno._id}}</h2>
-
+<div>
+<h2  style="font-size:100%">Student Detail of {{id}}</h2>
+</div>
 <div class="border border-secondary">
   <span><img src="https://pngimage.net/wp-content/uploads/2018/06/student-logo-png-6.png"></span>
 
-  <div *ngFor = "let alumno of alumnos">
+  
   <h2>{{alumno._id}}</h2>
   <p><b>Address:</b> {{alumno.address}}</p>
   <p><b>Phone:</b> {{alumno.phone}}</p>
-</div>
+ 
 </div>
 
 <p><p>
