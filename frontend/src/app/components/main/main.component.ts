@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {AsignaturaService} from "../../services/asignatura.service";
 import {Router} from "@angular/router";
 import {FormBuilder} from "@angular/forms";
+import { StationService } from 'src/app/services/station.service';
 
 @Component({
   selector: 'app-main',
@@ -10,7 +10,7 @@ import {FormBuilder} from "@angular/forms";
 })
 export class MainComponent implements OnInit {
 
-  constructor(private newasignaturaService: AsignaturaService,
+  constructor(private newstationService: StationService,
               private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit() {

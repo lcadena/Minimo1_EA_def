@@ -1,0 +1,38 @@
+<h2>Stations</h2>
+
+<p *ngFor ="let asignatura of lista">
+    {{station.name}}
+</p>
+<br>
+<br>
+
+<form [formGroup]="detallesForm" (ngSubmit)=" stationdetalle()">
+    <h6>Detalles de la Estación</h6>
+    <div class="form-group">
+        <label > El ID de la estación</label>  
+        <input type="text" class ="form-control" formControlName="stationId" placeholder="id de la station">
+    </div>    
+    <span *ngIf="station" > </span>
+       <p> {{station.name}} </p>
+    
+    <div class="form-group">
+        <button class="btn " type="submit" > Detalle </button>
+    </div>
+=======
+<div *ngFor = "let station of stations; let i=index">
+  <input type="hidden" value="{{station.name}}">
+
+
+  <h5>{{station.name}}</h5>
+  <p>
+    <button class="btn btn-primary" [routerLink]="['stationDetail',station._id]"><i class="fa fa-eye"></i>&nbsp;See Station detail</button>
+    <button class="btn btn-primary" [routerLink]="['']"><i class="fa fa-clone"></i> See bikes of station</button>
+    <button class="btn btn-danger" (click)="confirmDelete(station._id, i)"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete </button>
+  </p>
+  <p></p>
+
+</div>
+
+<p><p>
+  <button class="logout" [routerLink]="['']"><i class="fa fa-toggle-left" aria-hidden="true"></i> Back to main menu</button>
+</p><p>

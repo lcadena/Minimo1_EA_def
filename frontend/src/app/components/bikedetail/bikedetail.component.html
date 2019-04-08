@@ -1,0 +1,20 @@
+<div>
+  <h2  style="font-size:100%">Student Detail of {{id}}</h2>
+  </div>
+  <div class="border border-secondary">
+    <span><img src="https://pngimage.net/wp-content/uploads/2018/06/student-logo-png-6.png"></span>
+  
+    
+    <h2>{{bike._id}}</h2>
+    <p><b>name:</b> {{bike.name}}</p>
+    <p><b>kms:</b> {{bike.kms}}</p>
+   
+  </div>
+  
+  <p><p>
+    <button class="btn btn-primary btn-block" [routerLink]="['add_Bike']"><i class="fa fa-id-badge"></i>&nbsp;See all Bikes</button>
+  </p>
+  
+  <p><p>
+    <button class="logout" [routerLink]="['']"><i class="fa fa-toggle-left" aria-hidden="true"></i> Back to main menu</button>
+  </p><p>

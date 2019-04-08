@@ -1,0 +1,18 @@
+<h2>Bikes</h2>
+
+  <div *ngFor = "let bike of stations; let i=index">
+  <input type="hidden" value="{{bike,name}}">
+
+      <h5>{{bike.name}}</h5>
+        <p>
+         <button class="btn btn-primary" [routerLink]="['bikeDetail',bike._id]"><i class="fa fa-eye"></i>&nbsp;See bike detail</button>
+         <button class="btn btn-primary" [routerLink]="['']"><i class="fa fa-clone"></i> See bikes</button>
+         <button class="btn btn-danger" (click)="confirmDelete(bike._id, i)"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete </button>
+        </p>
+    <p></p>
+
+</div>
+
+<p><p>
+  <button class="logout" [routerLink]="['']"><i class="fa fa-toggle-left" aria-hidden="true"></i> Back to main menu</button>
+</p><p>

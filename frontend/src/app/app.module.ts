@@ -11,6 +11,11 @@ import { NewasignaturaComponent } from './components/newasignatura/newasignatura
 import { MainComponent } from './components/main/main.component';
 import { NewalumnoComponent } from './components/newalumno/newalumno.component';
 import { AlumnodetalleComponent } from "./components/alumnodetalle/alumnodetalle.component";
+import { StationsComponent } from './components/stations/stations.component';
+import { BikesComponent } from './components/bikes/bikes.component';
+import { NewstationComponent } from './components/newstation/newstation.component';
+import { NewbikeComponent } from './components/newbike/newbike.component';
+import { BikedetailComponent } from './components/bikedetail/bikedetail.component';
 
 
 @NgModule({
@@ -21,7 +26,12 @@ import { AlumnodetalleComponent } from "./components/alumnodetalle/alumnodetalle
     NewasignaturaComponent,
     MainComponent,
     NewalumnoComponent,
-    AlumnodetalleComponent
+    AlumnodetalleComponent,
+    StationsComponent,
+    BikesComponent,
+    NewstationComponent,
+    NewbikeComponent,
+    BikedetailComponent
   ],
   imports: [
     BrowserModule,
