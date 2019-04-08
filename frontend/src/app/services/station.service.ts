@@ -12,7 +12,7 @@ export class StationService {
   selectedBike: Stations
 
   constructor(private http: HttpClient) { 
-    this.selectedBike = new Stations("","","")
+    //this.selectedBike = new Stations("","","")
     this.enviroment = new Environments()
 
   }
@@ -25,6 +25,14 @@ export class StationService {
     return this.http.get<Stations[]>(this.enviroment.urlStation + "/stationsList")
   }
 
+  addBike(placeId: string, bikeId:string) {
+    return this.http.put(this.enviroment.urlRelacion + "/add", placeId + bikeId);
+
+  }
+  
+  deleteBike(placeId: string, bikeId: string) {
+    return this.http.delete(this.enviroment.urlRelacion +"/delete"+ `/${placeId}` + `/${bikeId}`);  
+}
 
 
 }

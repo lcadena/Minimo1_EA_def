@@ -30,7 +30,7 @@ export class BikeService {
       return this.http.delete(this.environment.urlBike + "/eliminar" + `/${_id}`);
     }
   
-    getBike(id: string):Observable<Bikes> {
-      return this.http.get<Bikes>(this.environment.urlAlumno + `/${id}`);
+    getBikeId(id: string):Observable<Bikes> {
+      return this.http.get<Bikes>(this.environment.urlBike + `/${id}`);
   }
 }

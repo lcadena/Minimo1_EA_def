@@ -23,14 +23,8 @@ export class StationsComponent implements OnInit {
     this.stationService.getStations()
       .subscribe(res => {
         this.stations = res
+        console.log("lista de estaciones  " + this.stations)
       });
-  }
-  /**
-   *
-   * @param id
-   */
-  confirmDelete(id: string, i: number){
-    
   }
 
 }
