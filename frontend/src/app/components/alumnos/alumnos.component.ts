@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpErrorResponse } from "@angular/common/http";
-import {FormBuilder, FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import { Alumnos } from "../../models/alumnos"
+import { HttpErrorResponse } from "@angular/common/http";
 import { AlumnosService } from "../../services/alumnos.service"
+import { Alumnos } from "../../models/alumnos"
 
 @Component({
   selector: 'app-alumnos',
@@ -11,35 +10,56 @@ import { AlumnosService } from "../../services/alumnos.service"
   styleUrls: ['./alumnos.component.css']
 })
 export class AlumnosComponent implements OnInit {
-  crearForm: FormGroup;
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private AlumnosService: AlumnosService) { 
-    this.crearForm = this.formBuilder.group({
-      name: new FormControl(),
-      address: new FormControl(),
-      home: new FormControl(),
-      movil: new FormControl()
-    })
+  constructor(private alumnosService: AlumnosService, private router: Router) {
+
   }
+
+  alumnos: Alumnos[];
 
   ngOnInit() {
-    
+    this.getStudents();
   }
 
-  addAlumno() {
-    //funcion para añadir un alumno
-   /* console.log("añadir usuario  " + this.crearForm.value);
-    let alumno = new Alumnos(this.crearForm.value.name, this.crearForm.value.address, this.crearForm.value.home, this.crearForm.value.movil);
-    this.AlumnosService.add(alumno)
-      .subscribe( res => {
-        if (res == 200){
-          console.log("Anadido correctamente");
-        }
-        else {
-          console.log ("Error");
-        }
-      }
-
-      )*/
+  getStudents(){
+    this.alumnosService.getAlumnos()
+      .subscribe(res =>{
+        this.alumnos = res; //res me recibe la lista de users
+      });
   }
+
+  /**
+   *
+   * @param id
+   */
+  confirmDelete(id: string, i: number) {
+    if(confirm('El alumno se borrará')){
+      this.alumnosService.deleteAlumno(id)
+        .subscribe(
+          res =>{
+            console.log(res);
+            console.log("Se ha borrado correctamente ", i);
+            //this.getStudents();
+
+            //Two way data binding!
+            this.alumnos.splice(i,1);
+            console.log("Se ha borrado correctamente ", this.alumnos);
+
+          },
+          err => {
+            this.handleError(err);
+          });
+    }
+  }
+
+  /**
+   *
+   * @param err
+   */
+  private handleError(err: HttpErrorResponse) {
+    if( err.status == 500 ) {
+      alert(err);
+    }
+  }
+
 }

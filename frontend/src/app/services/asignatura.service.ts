@@ -18,7 +18,7 @@ export class AsignaturaService {
   }
 
   addAsignatura(asignatura: Asignaturas) {
-    return this.http.post(this.environment.urlAsignatura + "nueva" , asignatura)
+    return this.http.post(this.environment.urlAsignatura + "/nueva" , asignatura)
   }
 
   getAsignaturas() :Observable<Asignaturas[]> {

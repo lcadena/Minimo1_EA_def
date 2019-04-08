@@ -1,27 +1,18 @@
-<p>ALUMNOS</p>
+<h2>Students</h2>
 
-<form [formGroup]="crearForm" (ngSubmit)="addAlumno()"> 
-    <div class="form-group">
-        <label> Name </label>
-        <input type="text" class="form-control" formControlName="name"/>
-    </div>
+  <div *ngFor = "let alumno of alumnos; let i=index">
+  <input type="hidden" value="{{alumno.name}}">
 
-    <div class="form-group">
-        <label> Addres</label>
-        <input type="text" class="form-control" formControlName="addres"/>
-    </div>
+      <h5>{{alumno.name}}</h5>
+        <p>
+         <button class="btn btn-primary" [routerLink]="['studentDetail',alumno._id]"><i class="fa fa-eye"></i>&nbsp;See student detail</button>
+         <button class="btn btn-primary" [routerLink]="['']"><i class="fa fa-clone"></i> See user products</button>
+         <button class="btn btn-danger" (click)="confirmDelete(alumno._id, i)"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete </button>
+        </p>
+    <p></p>
 
-    <div class="form-group">
-        <label> home </label>
-        <input type="text" class="form-control" formControlName="home"/>
-    </div>
+</div>
 
-    <div class="form-group">
-        <label> Movil </label>
-        <input type="text" class="form-control" formControlName="movil"/>
-    </div>
-
-    <div class="form-group">
-            <button class="btn " type="submit" > Añadir </button>
-    </div>
-</form>
+<p><p>
+  <button class="logout" [routerLink]="['']"><i class="fa fa-toggle-left" aria-hidden="true"></i> Back to main menu</button>
+</p><p>

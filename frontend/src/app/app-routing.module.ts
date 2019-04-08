@@ -6,6 +6,7 @@ import { AlumnosComponent } from './components/alumnos/alumnos.component';
 import { MainComponent } from "./components/main/main.component";
 import { NewasignaturaComponent } from "./components/newasignatura/newasignatura.component";
 import { NewalumnoComponent } from "./components/newalumno/newalumno.component";
+import { AlumnodetalleComponent } from "./components/alumnodetalle/alumnodetalle.component";
 
 const routes: Routes = [
 
@@ -14,8 +15,11 @@ const routes: Routes = [
   {path: 'api/alumno/:id', component: AlumnosComponent},
 
   {path: '', component: MainComponent, pathMatch: 'full'},
-  {path: 'api/add_alumno', component: NewalumnoComponent},
-  {path: 'api/add_subject', component: NewasignaturaComponent}
+  {path: 'add_subject', component: NewasignaturaComponent},
+  {path: 'add_student', component: NewalumnoComponent},
+  {path: 'subjectList', component: AsignaturasComponent},
+  {path: 'studentList', component: AlumnosComponent},
+  {path:'studentList/studentDetail/:id', component: AlumnodetalleComponent}
 ];
 
 @NgModule({

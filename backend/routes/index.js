@@ -14,9 +14,9 @@ api.get('/asignatura/listaAsignaturas', asignaturaCtrl.getAsignaturas)
 //detalle asignatura - FUNCIONA
 api.get('/asignatura/:asignaturaId', asignaturaCtrl.getAsignatura)
 //modificar asignatura
-//----
+//api.get('/asignatura/modificar/:asignaturaId', ?????)
 //eliminar asignatura
-//----
+//api.get('/asignatura/eliminar/:asignaturaId', ?????)
 
 
 //ALUMNOS: http://localhost:3000/api/alumno
@@ -29,7 +29,7 @@ api.get('/alumno/:alumnoId', alumnoCtrl.getAlumnobyId)
 //modificar alumno - FUNCIONA
 api.put('/alumno/modificar/:alumnoId', alumnoCtrl.updateAlumno)
 //eliminar alumno - FUNCIONA
-api.delete('/alumno/:alumnoId', alumnoCtrl.deleteAlumno)
+api.delete('/alumno/eliminar/:alumnoId', alumnoCtrl.deleteAlumno)
 
 
 
