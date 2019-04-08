@@ -9,6 +9,8 @@ import { AddBikeComponent } from './components/add-bike/add-bike.component';
 import { DeleteBikeComponent } from './components/delete-bike/delete-bike.component';
 import { StationsComponent } from './components/stations/stations.component';
 import { BikesComponent } from './components/bikes/bikes.component';
+import { StationdetailComponent } from './components/stationdetail/stationdetail.component';
+import { BikesofstationsComponent } from './components/bikesofstations/bikesofstations.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { BikesComponent } from './components/bikes/bikes.component';
     StationsComponent,
     AddBikeComponent,
     DeleteBikeComponent,
-    BikesComponent
+    BikesComponent,
+    StationdetailComponent,
+    BikesofstationsComponent
   ],
   imports: [
     BrowserModule,

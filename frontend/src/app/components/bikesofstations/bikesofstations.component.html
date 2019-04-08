@@ -1,4 +1,4 @@
-<h2>Bikes</h2>
+<h2>Bikes of Station</h2>
 <table>
       <!--cabecera-->
       <thead>
@@ -17,8 +17,8 @@
         <td>{{bike.description}}</td>
         <!--<td>{{station.bikes}}</td>-->
         <td>
-          <a (click)="deleteBike(bike._id)">
-            <i class="material-icons">delete</i>
+          <a (click)="addBike(bike._id)">
+            <i class="material-icons">add</i>
           </a>
         </td>
       </tr>

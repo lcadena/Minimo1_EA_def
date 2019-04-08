@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { StationService } from 'src/app/services/station.service';
 import { Router } from '@angular/router';
 import { Stations } from 'src/app/models/stations';
+import { Bikes } from 'src/app/models/bikes';
 
 @Component({
   selector: 'app-stations',
@@ -13,7 +14,8 @@ export class StationsComponent implements OnInit {
   constructor(private stationService: StationService, private router: Router) {
 
   }
-
+  
+  bikesStation: Object;
   stations: Stations[];
   ngOnInit() {
     this.getStations();
@@ -25,6 +27,15 @@ export class StationsComponent implements OnInit {
         this.stations = res
         console.log("lista de estaciones  " + this.stations)
       });
+  }
+
+  getBikesOfStation(_id: string) {
+    this.stationService.getBikesOfStation(_id)
+      .subscribe(res => {
+        this.bikesStation = res
+        console.log("lista de bicis de una estación  " + this.bikesStation)
+      })
+
   }
 
 }

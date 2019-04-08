@@ -58,9 +58,9 @@ function deleteBike(req, res){
         if (err) res.status(500).send( `Error al eliminarlo: ${err}`)
     
         bikedeleted.remove(err => {
-            if (err) res.status(500).send( `Error al eliminarlo: ${err}`)
+            if (err) res.status(500).send(`Error al eliminarlo: ${err}`)
             
-            res.status(200).send( `bicicleta eliminada`)
+            res.status(200).send('bicicleta eliminada')
         })
     
     })

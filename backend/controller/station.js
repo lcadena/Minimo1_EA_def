@@ -72,21 +72,18 @@ function getBikesOfStation(req, res) {
         console.log(result.bikes)
         //console.log(alumnos)
         if(err) return res.status(500).send(`Error al realizar la petición: ${err} `)
-    
-        return res.status(200).send(result.bikes)
-        /*var arraydeIds = result.alumnos
-        console.log(arraydeIds)
-        arraydeIds.forEach(element => {
-            console.log(element)
-            Alumno.findById({_id: element}, (err, alumnos) => {
-                if(err) return res.status(500).send(`Error al realizar la petición: ${err} `)
-                
-                return res.status(200).send(element)
-            })
-        });*/
-        //Alumno.findById({_id: result.alumnos}, (err, alumnos) => {
 
-        //})
+        if(!result) return res.status(400).send({message: 'La estación no existe'})
+
+        Bike.find({'_id': { $in: result.bikes}}, (err, bikes) => {
+            if(bikes.length == 0) {
+                return res.status(204).send({message: 'No hay bicis en la estación'})
+            }
+            else {
+                return res.status(200).send(bikes)
+            }
+        })
+
     })
 }
 
@@ -106,6 +103,7 @@ function addBikeToStation(req, res) {
     })
 
 }
+
 
 module.exports = {
     getStations,

@@ -1,28 +1,35 @@
-<h2>Stations</h2>
-<table>
-      <!--cabecera-->
-      <thead>
+<div class="card-panel grey lighten-1"><h2>Stations</h2>
+  <table>
+        <!--cabecera-->
+        <thead>
+  
+        </thead>
+        <!--cuerpo-->
+        <tbody>
+        <th>Name</th>
+        <th>State</th>
+        <th>Description</th>
+        <th>Operations</th>
+      </tbody>
+      <tr *ngFor ="let station of stations; let i=index">
 
-      </thead>
-      <!--cuerpo-->
-      <tbody>
-      <th>Name</th>
-      <th>State</th>
-      <th>Description</th>
-      <th>Operations</th>
-    </tbody>
-    <tr *ngFor ="let station of stations; let i=index">
-        <td>{{station.name}}</td>
-        <td>{{station.state}}</td>
-        <td>{{station.description}}</td>
-        <!--<td>{{station.bikes}}</td>-->
-        <td>
-          <a href="http://localhost:4200/api/bike/nuevo">
-            <i class="material-icons">visibility</i>
-          </a>
-        </td>
-      </tr>
-</table>
-<a href="http://localhost:4200/api/bike/listaBikes" class="waves-effect waves-light btn">Bikes List</a>
-<p></p>
+          <td>{{station.name}}</td>
+          <td>{{station.state}}</td>
+          <td>{{station.description}}</td>
+          <!--<td>{{station.bikes}}</td>-->
+          <td>
+            <a href="http://localhost:4200/api/relacion/listaBikes" (click)="getBikesOfStation(station._id)" >
+              <!--<button class="btn btn-primary" [routerLink]="['/api/relacion/listaBikes', station._id]"><i class="material-icons">visibility</i></button>-->
+              <i  class="material-icons">visibility</i>
+            </a>
+          </td>
+        </tr>
+  </table>
+  <a href="http://localhost:4200/api/bike/listaBikes" class="waves-effect waves-light btn">Bikes List</a>
+  <p></p>
+
+
+</div>
+            
+
 

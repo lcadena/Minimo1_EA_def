@@ -24,10 +24,10 @@ export class BikeService {
      getBikes():Observable<Bikes[]> { //tengo que recibir el tipo User para que me haga bien la lista
       return this.http.get<Bikes[]>(this.environment.urlBike + "/listaBikes");
     }
-  
-    //Me borra el alumno
-     deleteBike(_id: string) {
-      return this.http.delete(this.environment.urlBike + "/eliminar" + `/${_id}`);
+
+    deleteBike(_id: string) {
+      return this.http.delete(this.environment.urlBike + "/delete" + `/${_id}`)
+
     }
   
     getBikeId(id: string):Observable<Bikes> {

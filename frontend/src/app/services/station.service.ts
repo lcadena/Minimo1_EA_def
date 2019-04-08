@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Environments } from './environments';
 import { Stations } from '../models/stations';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { Bikes } from '../models/bikes';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +11,16 @@ import { Observable } from 'rxjs';
 export class StationService {
   enviroment: Environments
   selectedBike: Stations
+  currentId = new BehaviorSubject(null);
 
   constructor(private http: HttpClient) { 
     //this.selectedBike = new Stations("","","")
     this.enviroment = new Environments()
 
+  }
+
+  getStationById( ) {
+     
   }
 
   addStation(station: Stations){
@@ -29,10 +35,19 @@ export class StationService {
     return this.http.put(this.enviroment.urlRelacion + "/add", placeId + bikeId);
 
   }
+
+  getBikesOfStation(stationId: string) {
+    return this.http.get(this.enviroment.urlRelacion + "/listaBikes" + `/${stationId}`)
+  }
   
   deleteBike(placeId: string, bikeId: string) {
     return this.http.delete(this.enviroment.urlRelacion +"/delete"+ `/${placeId}` + `/${bikeId}`);  
-}
+  }
+
+  public setCurrentStation(stationId) : BehaviorSubject<Stations>{
+    this.currentId.next(stationId);
+    return stationId;
+  }
 
 
 }

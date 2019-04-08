@@ -25,7 +25,7 @@ api.get('/bike/:bikeId', bikeCtrl.getBikeById)
 //modificar bike - FUNCIONA
 api.put('/bike/modificar/:bikeId', bikeCtrl.updateBike)
 //eliminar alumno - FUNCIONA
-api.delete('/bike/eliminar/:bikeId', bikeCtrl.deleteBike)
+api.delete('/bike/delete/:bikeId', bikeCtrl.deleteBike)
 
 
 
