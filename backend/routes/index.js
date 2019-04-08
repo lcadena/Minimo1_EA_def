@@ -1,47 +1,42 @@
 'use strict'
 
 const express = require('express')
-const asignaturaCtrl = require('../controller/asignaturas')
-const alumnoCtrl = require('../controller/alumnos')
+const stationCtrl = require('../controller/station')
+const bikeCtrl = require('../controller/bike')
 const api = express.Router()
 
 
-//ASIGNATURAS: http://localhost:3000/api/asignatura
-//crear asignatura - FUNCIONA
-api.post('/asignatura/nueva', asignaturaCtrl.saveAsignatura)
-//listado de asignaturas - FUNCIONA
-api.get('/asignatura/listaAsignaturas', asignaturaCtrl.getAsignaturas)
-//detalle asignatura - FUNCIONA
-api.get('/asignatura/:asignaturaId', asignaturaCtrl.getAsignatura)
-//modificar asignatura
-//api.get('/asignatura/modificar/:asignaturaId', ?????)
-//eliminar asignatura
-//api.get('/asignatura/eliminar/:asignaturaId', ?????)
+//STATION: http://localhost:3000/api/asignatura
+//crear station - FUNCIONA
+api.post('/station/nueva', stationCtrl.saveStation)
+//listado de stations - FUNCIONA
+api.get('/station/stationsList', stationCtrl.getStations)
+//detalle station - FUNCIONA
+api.get('/station/:stationId', stationCtrl.getStationById)
 
 
-//ALUMNOS: http://localhost:3000/api/alumno
-// crear alumno - FUNCIONA
-api.post('/alumno/nuevo', alumnoCtrl.saveAlumno)
-//listar alumnos - FUNCIONA
-api.get('/alumno/listaAlumnos', alumnoCtrl.listarAlumnos)
-//detalle alumno - FUNCIONA
-api.get('/alumno/:alumnoId', alumnoCtrl.getAlumnobyId)
-//modificar alumno - FUNCIONA
-api.put('/alumno/modificar/:alumnoId', alumnoCtrl.updateAlumno)
+//Bikes: http://localhost:3000/api/alumno
+// crear bike - FUNCIONA
+api.post('/bike/nuevo', bikeCtrl.saveBike)
+//listar bike - FUNCIONA
+api.get('/bike/listaBikes', bikeCtrl.getBikes)
+//detalle bike - FUNCIONA
+api.get('/bike/:bikeId', bikeCtrl.getBikeById)
+//modificar bike - FUNCIONA
+api.put('/bike/modificar/:bikeId', bikeCtrl.updateBike)
 //eliminar alumno - FUNCIONA
-api.delete('/alumno/eliminar/:alumnoId', alumnoCtrl.deleteAlumno)
+api.delete('/bike/eliminar/:bikeId', bikeCtrl.deleteBike)
 
 
 
 //ASIGNATURAS Y ALUMNOS: http://localhost:3000/api/relacion
 // añadir alumno a asignatura - FUNCIONA
-api.put('/relacion/:asignaturaId/:alumnoId', asignaturaCtrl.addAlumno)
+api.put('/relacion/:stationId/:bikeId', stationCtrl.addBikeToStation)
 //listado asignaturas con alumnos
-api.get('/relacion/listaAsignaturasConAlumnos', asignaturaCtrl.getAsignaturasconalumnos)
+api.get('/relacion/listaStations', stationCtrl.getStationsWithBikes)
 //listas alumnos de una asignatura
-api.get('/relacion/listaAlumnos/:asignaturaId', asignaturaCtrl.getAlumnosdeAsignatura)
-//detalle alumno de una asignatura -- FUNCIONA
-api.get('/relacion/alumnoDeAsignatura/:alumnoId', asignaturaCtrl.getAlumno)
+api.get('/relacion/listaBikes/:stationId', stationCtrl.getBikesOfStation)
+
 
 
 module.exports = api;
