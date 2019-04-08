@@ -17,8 +17,8 @@ export class AlumnosService {
    }
    //recoger los datos en http 
    
-   add(alumno: Alumnos) {
-    return this.http.post(this.environment.urlAlumno, alumno)
+   addAlumno(alumno: Alumnos) {
+    return this.http.post(this.environment.urlAlumno + "nuevo", alumno)
   }
    
 }

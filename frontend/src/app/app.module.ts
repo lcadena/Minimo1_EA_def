@@ -9,6 +9,7 @@ import { AsignaturasComponent } from './components/asignaturas/asignaturas.compo
 import { AlumnosComponent } from './components/alumnos/alumnos.component';
 import { NewasignaturaComponent } from './components/newasignatura/newasignatura.component';
 import { MainComponent } from './components/main/main.component';
+import { NewalumnoComponent } from './components/newalumno/newalumno.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { MainComponent } from './components/main/main.component';
     AlumnosComponent,
     NewasignaturaComponent,
     MainComponent,
+    NewalumnoComponent,
    
   ],
   imports: [

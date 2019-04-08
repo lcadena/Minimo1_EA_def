@@ -51,7 +51,7 @@ export class NewasignaturaComponent implements OnInit {
           let token = res['token'];
           localStorage.setItem('token', token);
 
-          this.router.navigateByUrl("api/add_alumno");
+          this.router.navigateByUrl("");
         },
 
         err => {

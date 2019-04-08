@@ -28,7 +28,7 @@ export class AlumnosComponent implements OnInit {
 
   addAlumno() {
     //funcion para añadir un alumno
-    console.log("añadir usuario  " + this.crearForm.value);
+   /* console.log("añadir usuario  " + this.crearForm.value);
     let alumno = new Alumnos(this.crearForm.value.name, this.crearForm.value.address, this.crearForm.value.home, this.crearForm.value.movil);
     this.AlumnosService.add(alumno)
       .subscribe( res => {
@@ -40,6 +40,6 @@ export class AlumnosComponent implements OnInit {
         }
       }
 
-      )
+      )*/
   }
 }
