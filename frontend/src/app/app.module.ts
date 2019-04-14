@@ -5,23 +5,19 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AddBikeComponent } from './components/add-bike/add-bike.component';
-import { DeleteBikeComponent } from './components/delete-bike/delete-bike.component';
 import { StationsComponent } from './components/stations/stations.component';
 import { BikesComponent } from './components/bikes/bikes.component';
-import { StationdetailComponent } from './components/stationdetail/stationdetail.component';
 import { BikesofstationsComponent } from './components/bikesofstations/bikesofstations.component';
+import { UnassignedbikesComponent } from './components/unassignedbikes/unassignedbikes.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     StationsComponent,
-    AddBikeComponent,
-    DeleteBikeComponent,
     BikesComponent,
-    StationdetailComponent,
-    BikesofstationsComponent
+    BikesofstationsComponent,
+    UnassignedbikesComponent
   ],
   imports: [
     BrowserModule,

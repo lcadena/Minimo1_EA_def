@@ -15,8 +15,6 @@ export class StationsComponent implements OnInit {
 
   }
   
-  stationId: string;
-  bikesStation: Object;
   stations: Stations[];
   ngOnInit() {
     this.getStations();
@@ -30,13 +28,13 @@ export class StationsComponent implements OnInit {
       });
   }
 
-  getBikesOfStation(stationId) {
+  /*getBikesOfStation(stationId) {
     this.stationService.getBikesOfStation(stationId)
       .subscribe(res => {
         this.bikesStation = res
         console.log("lista de bicis de una estación  " + this.bikesStation)
       })
 
-  }
+  }*/
 
 }

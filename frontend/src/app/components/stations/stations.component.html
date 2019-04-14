@@ -1,5 +1,5 @@
 <div class="card-panel">
-  <h2 class="blue-text text-darken-2">Stations</h2>
+  <h2 class="green-text text-light-green lighten-3" style="font-family:Verdana, Geneva, Tahoma, sans-serif">Lista de Estaciones</h2>
   <table class="striped" >
         <!--cabecera-->
         <thead>
@@ -18,18 +18,20 @@
           <td>{{station.description}}</td>
           <!--<td>{{station.bikes}}</td>-->
           <td>
-            <a href="http://localhost:4200/api/relacion/listaBikes/:stationId" class="waves-effect waves-light btn">
-              <!--href="http://localhost:4200/api/relacion/listaBikes/stationId"
-                (click)="getBikesOfStation(stationId)" <button class="btn btn-primary" [routerLink]="['/api/relacion/listaBikes', stationId]"><i class="material-icons">visibility</i></button>-->
-              <i  class="material-icons right">visibility</i>view</a>
+              <button class="btn btn-primary light-green" [routerLink]="['/api/relacion/listaBikes', station._id]"><i class="material-icons">visibility</i></button>
+            
+              <!--href="http://localhost:4200/api/relacion/listaBikes/stationId <a class="waves-effect waves-light btn" [routerLink]="['/api/relacion/listaBikes', station._id]">"
+                (click)="getBikesOfStation(stationId)" <i  class="material-icons right">visibility</i>view</a>-->
+              
           </td>
         </tr>
   </table>
-  <a href="http://localhost:4200/api/bike/listaBikes" class="waves-effect waves-light btn">
+  <a href="http://localhost:4200/api/bike/listaBikes" class="waves-effect waves-light btn light-green">
   <i class="material-icons right">directions_bike</i>Bikes List</a>
   <p></p>
-
-
+  <a href="http://localhost:4200/api/bike/unassigned " class="waves-effect waves-light btn light-green">
+    <i class="material-icons right">directions_bike</i>Unassigned Bikes</a>
+  <p></p>
 </div>
             
 

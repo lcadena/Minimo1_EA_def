@@ -6,7 +6,7 @@ const bikeCtrl = require('../controller/bike')
 const api = express.Router()
 
 
-//STATION: http://localhost:3000/api/asignatura
+//STATION: http://localhost:3000/api/station
 //crear station - FUNCIONA
 api.post('/station/nueva', stationCtrl.saveStation)
 //listado de stations - FUNCIONA
@@ -15,28 +15,27 @@ api.get('/station/stationsList', stationCtrl.getStations)
 api.get('/station/:stationId', stationCtrl.getStationById)
 
 
-//Bikes: http://localhost:3000/api/alumno
+//Bikes: http://localhost:3000/api/bike
 // crear bike - FUNCIONA
 api.post('/bike/nuevo', bikeCtrl.saveBike)
 //listar bike - FUNCIONA
 api.get('/bike/listaBikes', bikeCtrl.getBikes)
+//lista de bicis unassigned
+api.get('/bike/unassigned', bikeCtrl.getUnassignedBikes)
 //detalle bike - FUNCIONA
 api.get('/bike/:bikeId', bikeCtrl.getBikeById)
-//modificar bike - FUNCIONA
-api.put('/bike/modificar/:bikeId', bikeCtrl.updateBike)
-//eliminar alumno - FUNCIONA
+//eliminar bike - FUNCIONA
 api.delete('/bike/delete/:bikeId', bikeCtrl.deleteBike)
 
 
 
 //ASIGNATURAS Y ALUMNOS: http://localhost:3000/api/relacion
-// añadir alumno a asignatura - FUNCIONA
+// añadir bike a station - FUNCIONA
 api.put('/relacion/:stationId/:bikeId', stationCtrl.addBikeToStation)
-//listado asignaturas con alumnos
+//listado stations con bicis
 api.get('/relacion/listaStations', stationCtrl.getStationsWithBikes)
-//listas alumnos de una asignatura
+//listar bikes de una station
 api.get('/relacion/listaBikes/:stationId', stationCtrl.getBikesOfStation)
-
 
 
 module.exports = api;

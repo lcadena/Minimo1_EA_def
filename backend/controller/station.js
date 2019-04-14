@@ -99,7 +99,7 @@ function addBikeToStation(req, res) {
         if(err) res.status(500).send(`Error al actualizar la asignatura: ${err}`)
         if(!result) return res.status(404).send('La asignatura no esta en la bbdd')
 
-        res.status(200).send(result)
+        return res.status(200).send(result)
     })
 
 }

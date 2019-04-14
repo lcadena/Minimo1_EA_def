@@ -13,7 +13,7 @@ function getBikes(req, res) {
     })
   }
 
-  // buscar alumno por id
+//bici por id
 function getBikeById(req, res) {
     let bikeId = req.params.bikeId
     Bike.findById(bikeId, (err, result) => {
@@ -24,11 +24,12 @@ function getBikeById(req, res) {
 }
 
 
-//crear un nuevo alumno
+//crear nueva bici
 function saveBike(req,res){
     let bike = new Bike( {
         name: req.body.name,
         kms: req.body.kms,
+        state: req.body.state,
         description: req.body.description
     });
     console.log(bike)
@@ -39,19 +40,18 @@ function saveBike(req,res){
     })   
 }
 
-//modificar alumno
-function updateBike(req, res){
-    let bikeId = req.params.bikeId
-    let update = req.body
-    Bike.findByIdAndUpdate(bikeId, update, (err, bikeupdated) => {
-        if (err) res.status(500).send(`Error al actualizarlo: ${err}`)
-        if (!bikeupdated) return res.status(404).send({message: 'La bicicleta no existe'})
-
-        res.status(200).send(bikeupdated)
+//lista de unassigned bicis
+function getUnassignedBikes(req, res) {
+    Bike.find({state: false}, (err, unassigbikes) => {
+        if (err) return res.status(500).send(`Error al realizar al petición: ${err}`)
+        if(!unassigbikes) return res.status(404).send('No existes bicis sin asignar')
+        
+        return res.status(200).send(unassigbikes)
     })
+
 }
 
-//eliminar alumno
+//eliminar bici
 function deleteBike(req, res){
     let bikeId = req.params.bikeId
     Bike.findById(bikeId, (err, bikedeleted) => {
@@ -71,6 +71,6 @@ module.exports = {
     getBikes,
     getBikeById,
     saveBike,
-    updateBike,
+    getUnassignedBikes,
     deleteBike
 }

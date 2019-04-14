@@ -4,8 +4,9 @@ const Schema = mongoose.Schema
 
 //esquema de alumnos 
 const BikeSchema = new Schema({
-    name: {type: String,unique: true},
-    kms: Number,
+    name: String,
+    kms: String,
+    state: Boolean,
     description: String
 
 })

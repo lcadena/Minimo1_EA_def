@@ -1,5 +1,5 @@
 <div class="card-panel">
-    <h2 class="blue-text text-darken-2">Bikes</h2>
+    <h2 class="green-text text-light-green lighten-3" style="font-family:Verdana, Geneva, Tahoma, sans-serif">Lista de Bicis</h2>
     <table class="striped">
         <!--cabecera-->
         <thead>
@@ -18,9 +18,9 @@
           <td>{{bike.description}}</td>
           <!--<td>{{station.bikes}}</td>-->
           <td>
-            <a (click)="deleteBike(bike._id)" class="waves-effect waves-light btn">
+            <a (click)="deleteBike(bike._id)" class="waves-effect waves-light btn red darken-4">
               <i class="material-icons right">delete</i>delete</a>
-            <a (click)="addBike(bike._id)" class="waves-effect waves-light btn">
+            <a (click)="addBike(bike._id)" class="waves-effect waves-light btn light-green">
                 <i class="material-icons">add</i>
               </a>
           </td>

@@ -9,8 +9,8 @@ import { Bikes } from '../models/bikes';
   providedIn: 'root'
 })
 export class StationService {
-  enviroment: Environments
-  selectedBike: Stations
+  enviroment: Environments;
+  selectedBike: Stations;
   currentId = new BehaviorSubject(null);
 
   constructor(private http: HttpClient) { 
@@ -31,22 +31,21 @@ export class StationService {
     return this.http.get<Stations[]>(this.enviroment.urlStation + "/stationsList")
   }
 
-  addBike(placeId: string, bikeId:string) {
+  /*addBike(placeId: string, bikeId:string) {
     return this.http.put(this.enviroment.urlRelacion + "/add", placeId + bikeId);
 
-  }
+  }*/
 
-  getBikesOfStation(stationId: string) {
-    return this.http.get(this.enviroment.urlRelacion + "/listaBikes" + `/${stationId}`)
+  getBikesOfStation(_id: string): Observable<Bikes[]> {
+    return this.http.get<Bikes[]>(this.enviroment.urlRelacion + "/listaBikes/" + _id)
   }
   
   deleteBike(placeId: string, bikeId: string) {
     return this.http.delete(this.enviroment.urlRelacion +"/delete"+ `/${placeId}` + `/${bikeId}`);  
   }
 
-  public setCurrentStation(stationId) : BehaviorSubject<Stations>{
-    this.currentId.next(stationId);
-    return stationId;
+  addBike(stationID: string, bikeID: string) {
+    return this.http.put(this.enviroment.urlRelacion + `/${stationID}` + `/${bikeID}`, {stationID, bikeID} )
   }
 
 
