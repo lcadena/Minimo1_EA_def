@@ -1,29 +1,28 @@
-<div class="card-panel">
-    <h2 class="green-text text-light-green lighten-3" style="font-family:Verdana, Geneva, Tahoma, sans-serif">Lista de Bicis</h2>
-    <table class="striped">
-        <!--cabecera-->
-        <thead>
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Lista de Bicis</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
   
-        </thead>
-        <!--cuerpo-->
-        <tbody>
-        <th>Name</th>
-        <th>Kms</th>
-        <th>Description</th>
-        <th>Operations</th>
-      </tbody>
-      <tr *ngFor ="let bike of bikes; let i=index">
-          <td>{{bike.name}}</td>
-          <td>{{bike.Kms}}</td>
-          <td>{{bike.description}}</td>
-          <!--<td>{{station.bikes}}</td>-->
-          <td>
-            <a (click)="deleteBike(bike._id)" class="waves-effect waves-light btn red darken-4">
-              <i class="material-icons right">delete</i>delete</a>
-            <a (click)="addBike(bike._id)" class="waves-effect waves-light btn light-green">
-                <i class="material-icons">add</i>
-              </a>
-          </td>
-        </tr>
-  </table>
-</div>
+  <ion-content>
+    <div>
+      <ion-searchbar [(ngModel)]="searchTerm" (change)="filterItems(searchTerm)" placeholder="Filter Schedules" (click)="refresh()"></ion-searchbar>
+    </div>
+    <ion-list-header>
+      <ion-label>Nombre</ion-label>
+      <ion-label>Kms</ion-label>
+      <ion-label>Description</ion-label>
+    </ion-list-header>
+      <ion-list *ngFor="let bike of bikes">
+          <ion-item>
+          <ion-avatar slot="start">
+            <ion-img src="https://lh3.googleusercontent.com/cbwsIFx-YNIdrr6bgx0AtPY9OI_IzM9O3mmSdugKP1AnTu-Q0me0bDxyDKq1Bm0KObg"></ion-img>
+          </ion-avatar>
+            <ion-label>{{ bike.name }}</ion-label>
+            <ion-label>{{ bike.kms }}</ion-label>
+            <ion-label>{{ bike.description }}</ion-label>
+          </ion-item>
+      </ion-list>
+  </ion-content>

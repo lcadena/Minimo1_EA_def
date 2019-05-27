@@ -1,52 +1,34 @@
 import { Injectable } from '@angular/core';
-import { Environments } from './environments';
-import { Stations } from '../models/stations';
+import { Environments } from './environment';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { Bikes } from '../models/bikes';
+import { Observable } from 'rxjs';
+import { Station } from '../models/station';
+import { Bike } from '../models/bike';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StationService {
-  enviroment: Environments;
-  selectedBike: Stations;
-  currentId = new BehaviorSubject(null);
+  environment: Environments;
 
-  constructor(private http: HttpClient) { 
-    //this.selectedBike = new Stations("","","")
-    this.enviroment = new Environments()
-
+  constructor(private http: HttpClient) {
+    this.environment = new Environments();
   }
 
-  getStationById( ) {
-     
+  getStations(): Observable<Station[]> {
+    console.log('Station service');
+    return this.http.get<Station[]>(this.environment.urlStation + '/stationsList');
   }
 
-  addStation(station: Stations){
-    return this.http.post(this.enviroment.urlStation + "/nueva", station)
-  }
-
-  getStations() :Observable<Stations[]> {
-    return this.http.get<Stations[]>(this.enviroment.urlStation + "/stationsList")
-  }
-
-  /*addBike(placeId: string, bikeId:string) {
-    return this.http.put(this.enviroment.urlRelacion + "/add", placeId + bikeId);
-
-  }*/
-
-  getBikesOfStation(_id: string): Observable<Bikes[]> {
-    return this.http.get<Bikes[]>(this.enviroment.urlRelacion + "/listaBikes/" + _id)
-  }
-  
-  deleteBike(placeId: string, bikeId: string) {
-    return this.http.delete(this.enviroment.urlRelacion +"/delete"+ `/${placeId}` + `/${bikeId}`);  
+  getBikesofStation(_id: string): Observable<Bike[]> {
+    return this.http.get<Bike[]>(this.environment.urlRelacion + '/listaBikes/' + _id);
   }
 
   addBike(stationID: string, bikeID: string) {
-    return this.http.put(this.enviroment.urlRelacion + `/${stationID}` + `/${bikeID}`, {stationID, bikeID} )
+    return this.http.put(this.environment.urlRelacion + `/${stationID}` + `/${bikeID}`, {stationID, bikeID});
   }
 
-
+  deleteBike(stationID: string, bikeID: string) {
+    return this.http.delete(this.environment.urlRelacion + '/delete' + `/${stationID}` + `/${bikeID}`);
+  }
 }

@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Lista de Estaciones</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list *ngFor="let station of stations">
+        <ion-item>
+        <ion-avatar slot="start">
+          <ion-img src="https://lh3.googleusercontent.com/cbwsIFx-YNIdrr6bgx0AtPY9OI_IzM9O3mmSdugKP1AnTu-Q0me0bDxyDKq1Bm0KObg"></ion-img>
+        </ion-avatar>
+          <ion-label>{{ station.name }}</ion-label>
+          <ion-button [routerLink]="['/api/relacion/listaBikes', station._id]" fill="outline" size="small">
+            <ion-icon slot="start" name="eye"></ion-icon>Details</ion-button>
+        </ion-item>
+    </ion-list>
+    <div margin-vertical text-right>
+    <ion-button [routerLink]="['/api/bike/listaBikes']" size="small" color="primary">
+      <ion-icon slot="start" name="bicycle"></ion-icon>Bikes</ion-button>
+    </div>
+</ion-content>

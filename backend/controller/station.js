@@ -104,6 +104,34 @@ function addBikeToStation(req, res) {
 
 }
 
+function deleteOneBike(req, res) {
+    try{
+        const stationId = req.params.stationId;
+        const bikeId = req.params.bikeId;
+
+        console.log(`StationID: ${stationId}, BikeID: ${bikeId}`);
+
+        let station = Station.findById(stationId);
+        if(!station){
+            return res.status(404).send({message: 'Station not found'})
+        }else{
+            mongoose.Types.ObjectId(bikeId);
+
+            let stationUpdated = Station.update({_id: stationId}, {$pull: {bikes: bikeId}});
+
+            if (stationUpdated.nModified === 0) {
+                return res.status(404).send({message: 'Bike not found'})
+            }
+
+            let bikeUpdated = Bike.findByIdAndUpdate({_id: bikeId}, {assigned: "false"});
+            console.log(bikeUpdated);
+        }
+        res.status(200).send({message:'Bike deleted successfully'});
+    } catch(err) {
+        res.status(500).send(err)
+    }
+}
+
 
 module.exports = {
     getStations,
@@ -111,5 +139,6 @@ module.exports = {
     saveStation,
     getStationById,
     addBikeToStation,
-    getBikesOfStation
+    getBikesOfStation,
+    deleteOneBike
 }

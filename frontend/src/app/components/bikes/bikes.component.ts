@@ -1,42 +1,48 @@
 import { Component, OnInit } from '@angular/core';
+import { Bike } from 'src/app/models/bike';
 import { BikeService } from 'src/app/services/bike.service';
 import { Router } from '@angular/router';
-import { Bikes } from 'src/app/models/bikes';
-import { NgForm } from '@angular/forms';
-declare var M: any
+import { NgModule} from '@angular/core';
+
 
 @Component({
   selector: 'app-bikes',
   templateUrl: './bikes.component.html',
-  styleUrls: ['./bikes.component.css']
+  styleUrls: ['./bikes.component.scss'],
 })
 export class BikesComponent implements OnInit {
 
-  constructor(private bikeService: BikeService, private router: Router) {
+  listaoriginal: Bike[];
+  bikes: Bike[];
+  searchTerm: string = '';
+  constructor(private bikeService: BikeService, private router: Router) { }
 
-   }
-
-  bikes: Bikes[];
   ngOnInit() {
     this.getBikes();
   }
+
+  refresh() {
+    this.getBikes();
+  }
+
   getBikes() {
     this.bikeService.getBikes()
       .subscribe(res => {
-        this.bikes = res
-        console.log("lista de estaciones  " + this.bikes)
+        this.bikes = res;
+        console.log('lista de estaciones: ' + this.bikes);
       });
   }
 
-  deleteBike(_id: string){
-    if(confirm ('Are you sure you want to delete it?')) {
-      this.bikeService.deleteBike(_id)
-      //ver respuesta del server
-      .subscribe(res => {
-        console.log(res)  
-        this.getBikes()
-        M.toast({html: 'Deleted successfully'})
-      })
+  filterItems(searchTerm) {
+    console.log(searchTerm);
+    var filtered = this.bikes.filter(item => {
+      return item.name.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1;
+    });
+    if(this.searchTerm === '') {
+      this.bikes = this.listaoriginal;
+    } else {
+      this.bikes = filtered;
     }
   }
+
 }

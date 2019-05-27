@@ -32,6 +32,7 @@ api.delete('/bike/delete/:bikeId', bikeCtrl.deleteBike)
 //ASIGNATURAS Y ALUMNOS: http://localhost:3000/api/relacion
 // añadir bike a station - FUNCIONA
 api.put('/relacion/:stationId/:bikeId', stationCtrl.addBikeToStation)
+api.delete('/relacion/delete/:stationId/:bikeId', stationCtrl.deleteOneBike)
 //listado stations con bicis
 api.get('/relacion/listaStations', stationCtrl.getStationsWithBikes)
 //listar bikes de una station

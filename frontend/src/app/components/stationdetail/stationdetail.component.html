@@ -1,0 +1,33 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Bikes of Station</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card>
+    <ion-card-header><ion-card-title>Assigned Bikes</ion-card-title></ion-card-header>
+    <ion-card-content>
+    <ion-list *ngFor="let bike of bikes">
+        <ion-item>
+          <ion-label text-left>{{ bike.name }}</ion-label>
+          <ion-label text-left>{{ bike.kms }}</ion-label>
+          <ion-button fill="outline" color="danger"(click)="deleteBike(bike._id)">
+              <ion-icon slot="start" name="trash"></ion-icon>Delete</ion-button>
+        </ion-item>
+    </ion-list>
+  </ion-card-content>
+  </ion-card>
+  <ion-card>
+      <ion-card-header><ion-card-title>Unassigned Bikes</ion-card-title></ion-card-header>
+    <ion-card-content>
+    <ion-list *ngFor="let bike of bikeslist">
+        <ion-item>
+          <ion-label>{{ bike.name }}</ion-label>
+          <ion-label>{{ bike.kms }}</ion-label>
+          <ion-button (click)="addBike(bike._id)" fill="outline">
+              <ion-icon slot="start" name="add"></ion-icon>Add</ion-button>
+        </ion-item>
+    </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

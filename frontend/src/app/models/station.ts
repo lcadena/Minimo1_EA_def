@@ -1,13 +1,13 @@
-import { Bikes } from './bikes';
+import { Bike } from './bike';
 
-export class Stations {
+export class Station {
     _id: string;
     name: string;
     state: string;
     description: string;
-    bikes: Bikes[];  
+    bikes: Bike[];
 
-    constructor(_id='',name ='', state='', description='', bikes = Bikes[""]){
+    constructor(_id: string, name: string, state: string, description: string, bikes: Bike[]) {
         this._id = _id;
         this.name = name;
         this.state = state;
